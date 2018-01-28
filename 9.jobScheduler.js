@@ -7,7 +7,7 @@ let f = () => {
   alert('Schedule a job!');
 }
 
-let n = 100;
+let n = 2000;
 
 const jobScheduler = (f, n) => {
   this.setTimeout(f, n);
