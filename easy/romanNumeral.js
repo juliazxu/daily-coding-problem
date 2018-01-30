@@ -28,8 +28,19 @@ const romanNumeralConvert = str => {
 }
 
 romanNumeralConvert('XIV') // returns 14
-// 
-
 romanNumeralConvert('XVI') // returns 16
 romanNumeralConvert('CM') // returns 900
 romanNumeralConvert('MCMXCVI') // returns 1996 1000 100 1000 10 100 5 1
+
+var translateRomanNumeral = function (romanNumeral) {
+  if (typeof romanNumeral !== 'string') {
+    return null;
+  }
+  var result = 0;
+  for (var i = 0; i < romanNumeral.length; i++) {
+    DIGIT_VALUES[romanNumeral[i]] >= DIGIT_VALUES[romanNumeral[i + 1]] || !romanNumeral[i + 1] 
+    ? result += DIGIT_VALUES[romanNumeral[i]] 
+    : result -= DIGIT_VALUES[romanNumeral[i]];
+  }
+  return result;
+};
