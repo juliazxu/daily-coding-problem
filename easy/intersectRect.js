@@ -46,20 +46,14 @@ var myRectangle2 = {
 };
 
 const findIntersect = (rect1, rect2) => {
-  let rect1X = [rect1.leftX, rect1.leftX + rect1.width];
-  let rect1Y = [rect1.bottomY, rect1.bottomY + rect1.height];
+  let leftX = Math.max(rect1.leftX, rect2.leftX);
+  let rightX = Math.min(rect1.leftX + rect1.width, rect2.leftX + rect2.width);
 
-  let rect2X = [rect2.leftX, rect2.leftX + rect2.width];
-  let rect2Y = [rect2.bottomY, rect2.bottomY + rect2.height];
-
-  let leftX = rect1X[0] > rect2X[0] ? rect1X[0] : rect2X[0];
-  let rightX = rect1X[1] < rect2X[1] ? rect1X[1] : rect2X[1];
-
-  let bottomY = rect1Y[0] > rect2Y[0] ? rect1Y[0] : rect2Y[0];
-  let topY = rect1Y[1] < rect2Y[1] ? rect1Y[1] : rect2Y[1];
+  let bottomY = Math.max(rect1.bottomY, rect2.bottomY);
+  let topY = Math.min(rect1.bottomY + rect1.height, rect2.bottomY + rect2.height);
 
   if (rightX <= leftX || topY <= bottomY) {
-    return 'Rectangles do not intersect.';
+    return 'Rectangle areas do not intersect.';
   }
 
   let newRect = {
