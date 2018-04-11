@@ -53,7 +53,7 @@ const fib = (() => {
     if (!memo[n - 1]) {
       memo[n - 1] = fib(n - 1);
     }
-    if (! memo[n - 2]) {
+    if (!memo[n - 2]) {
       memo[n - 2] = fib(n - 2);
     }
     return memo[n - 1] + memo[n - 2];
