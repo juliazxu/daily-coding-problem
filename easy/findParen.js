@@ -62,4 +62,4 @@ findParen('()(', 2); // No end paren found.
 findParen('()(', 1); // Input start paren index is not valid.
 findParen('(he(lll)o)()?', 0); // 9
 findParen('(he(lll)o)()?', 3); // 7
-findParen("Sometimes (when I nest them (my parentheticals) too much (like this (and this))) they get confusing.", 10)
+findParen("Sometimes (when I nest them (my parentheticals) too much (like this (and this))) they get confusing.", 10) // 79
