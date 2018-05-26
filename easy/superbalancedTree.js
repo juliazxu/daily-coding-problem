@@ -73,3 +73,56 @@ let tree3 = tree2.insertLeft(-5);
 let tree4 = tree3.insertRight(5);
 let tree5 = tree4.insertRight(6);
 checkSuperBalanced(tree2); // false
+
+
+// another solution
+
+class BinaryTreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insertLeft(value) {
+    this.left = new BinaryTreeNode(value);
+    return this.left;
+  }
+
+  insertRight(value) {
+    this.right = new BinaryTreeNode(value);
+    return this.right;
+  }
+}
+
+let tree1 = new BinaryTreeNode(0);
+tree1.insertLeft(-1);
+tree1.insertRight(1);
+
+let depths = [];
+
+function traverseTree(node, depth = 0) {
+  if (!node.left && !node.right) { depths.push(depth); return; }
+
+  if (node.left) traverseTree(node.left);
+  if (node.right) traverseTree(node.right);
+  console.log(depths);
+}
+
+traverseTree(tree1);
+depths = Array(new Set(depths));
+
+if (depths.length >= 2 || Math.abs(depths[0] - depths[1]) >= 1) {
+  console.log("Not superbalanced")
+} else {
+  console.log("superbalanced");
+}
+
+function getDepths(node, depth = 0) {
+  if (!node) return [];
+  if (!node.left && !node.right) return [depth];
+
+  return [...getDepths(node.left, depth + 1), ...getDepths(node.right, depth + 1)];
+}
+
+return getDepths(tree1);
